@@ -1,0 +1,46 @@
+{
+  "entities": {
+    "SiteContent": {
+      "title": "Site Content",
+      "description": "Stores all the dynamic content for the site (photos, text, etc.)",
+      "type": "object",
+      "properties": {
+        "heroImage": { "type": "string", "description": "URL of the hero image" },
+        "heroTitle": { "type": "string", "description": "Main title of the hero section" },
+        "heroSubtitle": { "type": "string", "description": "Subtitle of the hero section" },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "content": { "type": "string" },
+              "image": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "title": "User",
+      "description": "User profile and role",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "user"] }
+      }
+    }
+  },
+  "firestore": {
+    "/siteContent/{docId}": {
+      "schema": "SiteContent",
+      "description": "Site content document"
+    },
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profile"
+    }
+  }
+}
